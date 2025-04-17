@@ -1,0 +1,21 @@
+{
+    "name": "WORK-WISE Task Management App",
+    "short_name": "WorkWise",
+    "icons": [
+      {
+        "src": "W1.jpg",
+        "sizes": "192x192",
+        "type": "image/jpeg"
+      },
+      {
+        "src": "W2.jpg",
+        "sizes": "512x512",
+        "type": "image/jpeg"
+      }
+    ],
+    "start_url": "/",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff"
+}
+  

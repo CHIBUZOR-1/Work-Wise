@@ -2,3 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+.scrollbar::-webkit-scrollbar {
+    width: 6px;
+    opacity: 0.5;
+  }
+  
+  .scrollbar::-webkit-scrollbar-track {
+    background: #d3d1d1;
+    border-radius: 10px;
+  }
+  
+  .scrollbar::-webkit-scrollbar-thumb {
+    opacity: 0.5;
+    background: #868585;
+    border-radius: 10px;
+  }

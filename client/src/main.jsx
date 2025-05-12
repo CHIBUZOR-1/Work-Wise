@@ -1,14 +1,28 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
+import { Provider } from 'react-redux'
 import App from './App.jsx'
 import { BrowserRouter } from 'react-router-dom';
+import { persistor, store } from './Redux/store.js'
+import { PersistGate } from 'redux-persist/integration/react'
+import { WorkContextProvider } from './Context/WiseContext.jsx'
+import { HelmetProvider } from 'react-helmet-async';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
-     <App /> 
-    </BrowserRouter>
+    <HelmetProvider>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <BrowserRouter>
+            <WorkContextProvider>
+              <App /> 
+            </WorkContextProvider>
+          </BrowserRouter> 
+        </PersistGate>
+      </Provider>
+    </HelmetProvider>
+    
   </StrictMode>,
 )
 

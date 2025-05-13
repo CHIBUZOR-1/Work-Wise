@@ -28,7 +28,7 @@ module.exports = {
       },
     },
     {
-      urlPattern: /^https:\/\/work-wise-u6cm\.onrender\.com\/api\//,  // Your API URL for local dev
+      urlPattern: /^https:\/\/work-wise-u6cm\.onrender\.com\/api\//,  // Your API URL for prod dev
       handler: 'NetworkFirst',
       options: {
         cacheName: 'api-cache',

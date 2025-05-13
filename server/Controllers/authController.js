@@ -84,12 +84,10 @@ const logIn = async(req, res) => {
         if (error || !user) {
             return res.json({ ok: false, msg: "Invalid credentials" });
         }
-        console.log("Existing User Found:", user);
         const validPassword = await bcrypt.compare(password, user.password);
         if (!validPassword) {
             return res.json({ ok: false, msg: "Invalid credentials" });
         }
-        console.log("Password Match Successful");
         setCookiesWithToken(user.id, user.role, res);
         const details = {
             id: user.id,

@@ -59,17 +59,14 @@ app.use((req, res, next) => {
 });
 
 const PORT = process.env.HOSTPORT|| 5000;
-
 app.use('/api/users', userRouter);
 app.use('/api/tasks', taskRouter);
 app.use('/api/rep', reportRouter);
 
-const clientDistPath = path.join(__dirname, 'client_dist'); // renamed path inside server
-
-app.use(express.static(clientDistPath));
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.get('*', (req, res)=> {
-    res.sendFile(path.resolve(clientDistPath, 'index.html'));
+    res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'))
 });
 
 app.listen(PORT, () => {

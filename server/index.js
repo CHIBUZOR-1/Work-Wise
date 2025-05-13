@@ -58,17 +58,19 @@ app.use((req, res, next) => {
   })(req, res, next);
 });
 
-const PORT = process.env.HOSTPORT;
+const PORT = process.env.HOSTPORT|| 5000;
 
 app.use('/api/users', userRouter);
 app.use('/api/tasks', taskRouter);
 app.use('/api/rep', reportRouter);
 
-app.use(express.static(path.join(__dirname, '../client/dist')));
+const clientDistPath = path.join(__dirname, 'client_dist'); // renamed path inside server
+
+app.use(express.static(clientDistPath));
 
 app.get('*', (req, res)=> {
-    res.sendFile(path.resolve(__dirname, '../client/dist', 'index.html'))
-})
+    res.sendFile(path.resolve(clientDistPath, 'index.html'));
+});
 
 app.listen(PORT, () => {
     console.log(`Server listening at http://localhost:${PORT}`);

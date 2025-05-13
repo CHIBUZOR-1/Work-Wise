@@ -53,8 +53,8 @@ const Home = () => {
             </div>
             <div className='w-full flex flex-col gap-1 py-2 items-center justify-center'>
               <Avatars height={60} image={user?.photo} width={60} name={(user?.firstname + " " + user?.lastname).toUpperCase() || ""}/>
-              <p className='font-semibold'>{user.firstname}</p>
-              <h3 className='font-medium text-sm'>{user.email}</h3>
+              <p className='font-semibold'>{user?.firstname}</p>
+              <h3 className='font-medium text-sm'>{user?.email}</h3>
             </div>
             <aside className='flex flex-col max-sm:grid max-sm:grid-cols-2 sm:h-full py-2 max-sm:gap-3 px-1 max-sm:w-full sm:gap-4'>
                   <Link to={'panel'}  className='cursor-pointer bg-blue-500 max-sm:rounded-md hover:bg-blue-200 group  px-3 h-[40px] text-[20px] border'>

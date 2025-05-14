@@ -57,12 +57,12 @@ const SignUp = () => {
     <div className='flex h-screen items-center justify-center'>
           <div className='flex bg-green-400 h-screen max-md:hidden w-full items-center justify-center'>
             <div className='h-full w-full'>
-              <img src={pix.wk} className='w-full flex flex-shrink-0 h-full object-fill' alt="work-wise" />
+              <img src={pix.work_wise} className='w-full flex flex-shrink-0 h-full object-fill' alt="work-wise" />
             </div>
           </div>
           <div className='w-full flex flex-col gap-1 items-center'>
             <div className='w-full md:hidden flex items-center justify-center'>
-                <img src={pix.wr} style={{ boxShadow: '0px 0px 10px 0px #22d3ee' }} className='h-16' alt="logo" />
+                <img src={pix.work_wise} style={{ boxShadow: '0px 0px 10px 0px #22d3ee' }} className='h-16' alt="logo" />
               </div>
             <div className='flex w-[80%] gap-3 flex-col items-center border p-3'>
               <div>
@@ -77,10 +77,10 @@ const SignUp = () => {
                 <input onChange={handleChange} value={info.phone} className='w-full p-2 border max-md:text-sm font-medium rounded-md border-slate-300' placeholder='Phone' type="text" name="phone" />
                 <input onChange={handleChange} value={info.password} className='w-full p-2 border max-md:text-sm font-medium rounded-md border-slate-300' placeholder='Password' type="password" name="password" />
                 <input onChange={handleChange} value={info.confirm} className='w-full p-2 border max-md:text-sm font-medium rounded-md border-slate-300' placeholder='Confirm Password' type="password" name="confirm" />
-                <button onClick={handleSubmit}  className='p-2 border flex items-center justify-center gap-2 bg-cyan-600 text-slate-50 rounded-md w-full'>Submit {load && <span className='h-5 w-5 border-[2px] rounded-full  border-t-teal-400 animate-spin'></span>}</button>
+                <button onClick={handleSubmit}  className='p-2 border flex items-center justify-center gap-2 bg-blue-800 font-semibold text-white rounded-md w-full'>Submit {load && <span className='h-5 w-5 border-[2px] rounded-full  border-t-teal-400 animate-spin'></span>}</button>
               </div>
               <div className='flex items-center justify-center'>
-                    <p className='text-slate-400 max-sm:text-sm'>Already have an account? <span className='text-blue-500 font-semibold'><Link to='/' style={{ textDecoration: 'none '}}>Login</Link></span></p>
+                    <p className='text-slate-400 max-sm:text-sm'>Already have an account? <span className='text-blue-600 font-semibold'><Link to='/' style={{ textDecoration: 'none '}}>Login</Link></span></p>
                 </div>
             </div>
             

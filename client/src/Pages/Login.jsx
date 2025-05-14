@@ -51,12 +51,12 @@ const Login = () => {
     <div className='flex h-screen items-center justify-center'>
       <div className='flex bg-green-400 h-screen max-md:hidden w-full items-center justify-center'>
         <div className='h-full w-full'>
-          <img src={pix.wk} className='w-full flex flex-shrink-0 h-full object-fill' alt="work-wise" />
+          <img src={pix.work_wise} className='w-full flex flex-shrink-0 h-full object-fill' alt="work-wise" />
         </div>
       </div>
       <div className='w-full flex flex-col gap-2 items-center'>
         <div className='w-full md:hidden flex items-center justify-center'>
-            <img src={pix.wr} style={{ boxShadow: '0px 0px 10px 0px #22d3ee' }} className='h-16' alt="logo" />
+            <img src={pix.work_wise} style={{ boxShadow: '0px 0px 10px 0px #22d3ee' }} className='h-16' alt="logo" />
           </div>
         <div className='flex w-[80%] gap-3 flex-col items-center border p-3'>
           <div>
@@ -66,7 +66,7 @@ const Login = () => {
           <div className='space-y-2'>
             <input value={info.email} onChange={handleChange} className='w-full p-2 border max-md:text-sm font-medium rounded-md border-slate-300' placeholder='email' type="email" name="email" />
             <input value={info.password} onChange={handleChange} className='w-full p-2 border max-md:text-sm font-medium rounded-md border-slate-300' placeholder='password' type="password" name="password" />
-            <button onClick={handleSubmit} className='p-2 flex items-center gap-2 justify-center border bg-cyan-600 font-semibold text-slate-50 rounded-md w-full'>
+            <button onClick={handleSubmit} className='p-2 flex items-center gap-2 justify-center border bg-blue-800 font-semibold text-slate-50 rounded-md w-full'>
              Login
              {load && <span className='h-5 w-5 border-[2px] rounded-full  border-t-teal-400 animate-spin'></span>}
             </button>

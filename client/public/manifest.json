@@ -3,14 +3,14 @@
     "short_name": "WorkWise",
     "icons": [
       {
-        "src": "W1.jpg",
+        "src": "W1p.png",
         "sizes": "192x192",
-        "type": "image/jpeg"
+        "type": "image/png"
       },
       {
-        "src": "W2.jpg",
+        "src": "W2p.png",
         "sizes": "512x512",
-        "type": "image/jpeg"
+        "type": "image/png"
       }
     ],
     "start_url": "/",

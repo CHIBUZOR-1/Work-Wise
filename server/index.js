@@ -68,5 +68,5 @@ app.get('*', (req, res)=> {
 });
 
 app.listen(PORT, () => {
-    console.log(`Server Listening at http://localhost:${PORT}`);
+    console.log(`Server listening @ http://localhost:${PORT}`);
 });

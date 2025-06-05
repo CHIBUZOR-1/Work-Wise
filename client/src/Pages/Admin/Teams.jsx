@@ -44,14 +44,20 @@ const Teams = ({ handleBackToMenu }) => {
 
   return (
     <div className='h-full flex flex-col gap-3 items-center w-full p-2'>
-      <div className=' w-full max-sm:fixed max-sm:bg-white max-sm:p-2 flex justify-between items-center gap-1'>
+      <div className=' w-full max-sm:fixed max-sm:bg-white max-sm:p-2 sm:hidden flex justify-between items-center gap-1'>
         <div className='flex items-center gap-2'>
           <div onClick={ handleBackToMenu } className='p-2 bg-blue-600 cursor-pointer hover:bg-cyan-400 group  active:bg-orange-300 rounded-full border sm:hidden '>
             <FaArrowLeft className='text-white group-hover:text-white'/>
           </div>
           <h3 className='text-xl font-medium'>Teams <span className='border px-1'>{teams.length}</span></h3>
         </div>
-        <div onClick={handleDownloadUsersReport} className='flex cursor-pointer gap-2 rounded bg-green-200 p-1 items-center justify-center'>
+        <div onClick={handleDownloadUsersReport} className='flex hover:border-blue-500 border cursor-pointer gap-2 active:bg-green-500 rounded bg-green-200 p-1 items-center justify-center'>
+          <GrDocumentText className='text-slate-500' />
+          <p className='text-sm font-semibold'>Download Report</p>
+        </div>
+      </div>
+      <div className='max-sm:hidden pt-12 p-1 flex justify-end w-full'>
+        <div onClick={handleDownloadUsersReport} className='flex active:bg-green-500 border hover:border-blue-500 cursor-pointer gap-2 rounded bg-green-200 p-1 items-center justify-center'>
           <GrDocumentText className='text-slate-500' />
           <p className='text-sm font-semibold'>Download Report</p>
         </div>
@@ -71,7 +77,8 @@ const Teams = ({ handleBackToMenu }) => {
       }
       {
         !loader && teams.length > 0 &&  (
-          <div className='grid grid-cols-3 overflow-y-auto scrollbar max-md:grid-cols-2 p-2 pt-14 max-sm:grid-cols-1 gap-2 w-full'>
+          
+          <div className='grid grid-cols-3 overflow-y-auto scrollbar max-md:grid-cols-2 p-2 max-sm:pt-14 max-sm:grid-cols-1 gap-2 w-full'>
             {
               teams.map((t,i)=> {
                 return (

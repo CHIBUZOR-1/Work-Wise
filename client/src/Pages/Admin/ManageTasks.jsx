@@ -78,7 +78,7 @@ const ManageTasks = ({ handleBackToMenu }) => {
         <div className='flex max-lg:flex-col justify-between lg:items-center'>
           <div className='max-lg:flex max-lg:w-full max-lg:justify-between max-lg:items-center max-lg:py-2'>
             <h3 className='font-semibold'>My Tasks</h3>
-            <div onClick={handleDownloadReport} className='flex hover:border hover:border-blue-500 cursor-pointer gap-2 lg:hidden rounded bg-green-200 p-1 items-center justify-center'>
+            <div onClick={handleDownloadReport} className='flex hover:border hover:border-blue-500 cursor-pointer gap-2 lg:hidden active:bg-green-500 rounded bg-green-200 p-1 items-center justify-center'>
               <GrDocumentText className='text-slate-500' />
               <p className='text-sm font-semibold'>Download Report</p>
             </div>

@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 import { setUser } from '../Redux/UserSlice';
 
-const Login = () => {
+const Login = ({installed, showInstallModal}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [info, setInfo] = useState({
@@ -14,7 +14,6 @@ const Login = () => {
     password: '',
   });
   const [load, setLoad] = useState(false);
-
   const handleChange = (e) => {
     setInfo({ ...info, [e.target.name]: e.target.value });
   }
@@ -48,8 +47,11 @@ const Login = () => {
   }
 
   return (
-    <div className='flex h-screen items-center justify-center'>
-      <div className='flex bg-green-400 h-screen max-md:hidden w-full items-center justify-center'>
+    <div className='flex relative h-screen items-center justify-center'>
+      <div className={`${installed && 'hidden'} absolute z-40 top-2 right-2`}>
+        <button disabled={!window.matchMedia('(display-mode: browser)').matches && !window.navigator.standalone} onClick={showInstallModal} className='flex active:bg-blue-400 items-center justify-center p-2 bg-blue-700 rounded-md text-white font-semibold'>Install</button>
+      </div>
+      <div className='flex h-screen max-md:hidden w-full items-center justify-center'>
         <div className='h-full w-full'>
           <img src={pix.work_wise} className='w-full flex flex-shrink-0 h-full object-fill' alt="work-wise" />
         </div>

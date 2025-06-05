@@ -21,15 +21,66 @@ import TeamPanel from './Pages/Team/TeamPanel'
 import TeamsTodoUpdate from './Pages/Team/TeamsTodoUpdate'
 import EntryLoad from './Components/EntryLoad'
 import ForgotPassword from './Pages/ForgotPassword'
+import { Button, Modal} from 'antd';
 
 const App = () => {
   const navigate = useNavigate();
-    const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [showInstallModal, setShowInstallModal] = useState(false);
+  const [isInstalled, setIsInstalled] = useState(false);
+
   useEffect(() => { 
     setTimeout(() => { 
       setLoading(false); 
     }, 3000);  
   }, []); 
+
+  useEffect(() => {
+    const checkInstalled = () => {
+      const standalone = window.matchMedia('(display-mode: standalone)').matches;
+      const navigatorStandalone = window.navigator.standalone === true;
+      setIsInstalled(standalone || navigatorStandalone);
+    };
+
+    checkInstalled();
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault();
+      const dismissed = localStorage.getItem('installPromptDismissed');
+
+      if (!dismissed || dismissed !== 'true') {
+        setDeferredPrompt(e);
+        setShowInstallModal(true);
+      }
+    };
+
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+
+    return () => {
+      window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    };
+  }, []);
+  const handleInstall = async () => {
+    if (!deferredPrompt) return;
+
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+
+    if (outcome === 'accepted') {
+      console.log('✅ App installed');
+    } else {
+      console.log('❌ Installation dismissed');
+    }
+
+    setShowInstallModal(false);
+    setDeferredPrompt(null);
+  };
+
+  const handleCancel = () => {
+    localStorage.setItem('installPromptDismissed', 'true');
+    setShowInstallModal(false);
+  };
   if (loading) { 
     return <EntryLoad />; 
   }
@@ -37,8 +88,23 @@ const App = () => {
     <>
       <ToastContainer className='max-sm:flex max-sm:w-full px-1 max-sm:justify-center font-semibold' />
       <ScrollTop />
+      <Modal
+        title="Install Work Wise"
+        open={showInstallModal}
+        onCancel={handleCancel}
+        footer={[
+          <Button key="cancel" onClick={handleCancel}>
+            Cancel
+          </Button>,
+          <Button key="install" type="primary" onClick={handleInstall}>
+            Install
+          </Button>,
+        ]}
+      >
+        <p>Would you like to install <strong className='text-blue-500'>Work-Wise</strong> on your device for quick access?</p>
+      </Modal>
       <Routes>
-        <Route path='/' element={<Login/>} />
+        <Route path='/' element={<Login showInstallModal={() => setShowInstallModal(true)} installed={isInstalled}/>} />
         <Route path='/sign-up' element={<SignUp />} />
         <Route path='/forgot-password' element={<ForgotPassword />} />
         <Route path='*' element={<NotFound/>}/>
